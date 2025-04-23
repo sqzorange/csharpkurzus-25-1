@@ -1,10 +1,9 @@
 using System.Text.Json;
-
-namespace QO1APY.services
+namespace QO1APY.Services
 {
     public class FileService
     {
-        public static List<Question> loadQuestions()
+        public static List<Question> LoadQuestions()
         {
             try
             {
@@ -23,5 +22,9 @@ namespace QO1APY.services
                 throw new Exception($"Hiba történt a fájl beolvasásakor: {ex.Message}");
             }
         }
+
+        public void SaveLeaderboard() { }
+
+        public void LoadLeaderboard() { }
     }
 }
