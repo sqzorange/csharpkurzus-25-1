@@ -1,20 +1,13 @@
-﻿using QO1APY;
+﻿using System.Text.Json;
+
+using QO1APY;
+using QO1APY.services;
 
 
-Console.WriteLine("Hello, World!");
+List<Question> listQuestions = FileService.loadQuestions();
 
-Question question = new Question("Kérdés", new List<string> { "a", "b", "c" }, 1, "easy");
-Console.WriteLine(question.text);
-Console.WriteLine(question.listAnswers[0]);
-Console.WriteLine(question.listAnswers[1]);
-Console.WriteLine(question.listAnswers[2]);
+Console.WriteLine(listQuestions[0].text);
 
-Console.WriteLine(question.correctIndex);
-Console.WriteLine(question.difficulty);
-
-PlayerResult playerResult = new PlayerResult("Név", 100, DateTime.Now);
-Console.WriteLine(playerResult.Name);
-Console.WriteLine(playerResult.Score);
-Console.WriteLine(playerResult.Date);
 
 Console.ReadKey();
+
