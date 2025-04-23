@@ -1,0 +1,74 @@
+[
+    {
+      "text": "Mi Magyarország fővárosa?",
+      "listAnswers": ["Debrecen", "Szeged", "Budapest", "Pécs"],
+      "correctIndex": 2,
+      "difficulty": "easy"
+    },
+    {
+      "text": "Ki írta a 'Bűn és bűnhődés' című regényt?",
+      "listAnswers": ["Lev Tolsztoj", "Dosztojevszkij", "Puskin", "Gogol"],
+      "correctIndex": 1,
+      "difficulty": "medium"
+    },
+    {
+      "text": "Melyik bolygó van legközelebb a Naphoz?",
+      "listAnswers": ["Föld", "Mars", "Merkúr", "Vénusz"],
+      "correctIndex": 2,
+      "difficulty": "easy"
+    },
+    {
+      "text": "Hány dimenzióban létezik a tér a klasszikus fizikában?",
+      "listAnswers": ["1", "2", "3", "4"],
+      "correctIndex": 2,
+      "difficulty": "easy"
+    },
+    {
+      "text": "Melyik évben kezdődött a második világháború?",
+      "listAnswers": ["1939", "1941", "1918", "1929"],
+      "correctIndex": 0,
+      "difficulty": "medium"
+    },
+    {
+      "text": "Mi a periódusos rendszer első eleme?",
+      "listAnswers": ["Hélium", "Hidrogén", "Oxigén", "Nátrium"],
+      "correctIndex": 1,
+      "difficulty": "easy"
+    },
+    {
+      "text": "Ki festette a Mona Lisát?",
+      "listAnswers": ["Michelangelo", "Raffaello", "Leonardo da Vinci", "Donatello"],
+      "correctIndex": 2,
+      "difficulty": "easy"
+    },
+    {
+      "text": "Melyik országban található a Machu Picchu?",
+      "listAnswers": ["Chile", "Mexikó", "Peru", "Brazília"],
+      "correctIndex": 2,
+      "difficulty": "medium"
+    },
+    {
+      "text": "Mi a világ leghosszabb folyója?",
+      "listAnswers": ["Nílus", "Amazonas", "Mississippi", "Jangce"],
+      "correctIndex": 1,
+      "difficulty": "medium"
+    },
+    {
+      "text": "Ki volt az első ember az űrben?",
+      "listAnswers": ["Neil Armstrong", "Jurij Gagarin", "Buzz Aldrin", "Alan Shepard"],
+      "correctIndex": 1,
+      "difficulty": "easy"
+    },  
+    {
+      "text": "Mi a Schrödinger macskája gondolatkísérlet célja?",
+      "listAnswers": [
+        "Az állati jogok védelme",
+        "A kvantummechanika paradoxonjainak bemutatása",
+        "A pszichológiai elméletek igazolása",
+        "A tér-idő kontinuum elemzése"
+      ],
+      "correctIndex": 1,
+      "difficulty": "hard"
+    }
+  ]
+  
