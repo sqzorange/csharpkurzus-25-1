@@ -6,14 +6,14 @@ namespace QO1APY.Services
     {
         public static void StartGame()
         {
-            Console.WriteLine("Üdvözöljük a Kvízjátékban!");
-            Console.Write("Kérjük, adja meg a nevét:");
-            string playerName = Console.ReadLine() ?? "Név nélkül";
+            Console.Clear();
+            Console.WriteLine("=== Kvízjáték ===");
+            Console.Write("Kérjük, adja meg a nevét: ");
+            string playerName = Console.ReadLine() ?? "Névtelen";
             Console.Clear();
 
             Console.WriteLine($"Üdvözöljük, {playerName}! Készen áll a játékra? (I/N)");
             string startGame = Console.ReadLine() ?? "N";
-
             Console.Clear();
 
             if (startGame.ToUpper() != "I")
@@ -23,52 +23,67 @@ namespace QO1APY.Services
             }
 
             List<Question> questions = FileService.LoadQuestions();
-            if (questions.Count == 0)
-            {
-                Console.WriteLine("Nincsenek kérdések betöltve.");
-                return;
-            }
-
             Random random = new();
             List<Question> randomQuestions = questions.OrderBy(x => random.Next()).Take(5).ToList();
             int score = 0;
 
             foreach (var question in randomQuestions)
             {
-                Console.WriteLine("\n" + question.text);
-                Console.WriteLine("Válaszok:");
-                for (int j = 0; j < question.listAnswers.Count; j++)
+                int selectedAnswer = 0;
+
+                while (true)
                 {
-                    Console.WriteLine($"{j + 1}. {question.listAnswers[j]}");
+                    Console.Clear();
+                    Console.WriteLine(question.text);
+                    Console.WriteLine("\nVálaszok:");
+
+                    for (int i = 0; i < question.listAnswers.Count; i++)
+                    {
+                        if (i == selectedAnswer)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Yellow;
+                            Console.WriteLine($"> {question.listAnswers[i]}");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.WriteLine($"  {question.listAnswers[i]}");
+                        }
+                    }
+
+                    ConsoleKey key = Console.ReadKey(true).Key;
+
+                    if (key == ConsoleKey.UpArrow)
+                        selectedAnswer = (selectedAnswer - 1 + question.listAnswers.Count) % question.listAnswers.Count;
+                    else if (key == ConsoleKey.DownArrow)
+                        selectedAnswer = (selectedAnswer + 1) % question.listAnswers.Count;
+                    else if (key == ConsoleKey.Enter)
+                        break;
                 }
 
-                Console.Write("Kérem, válassza ki a helyes választ (1-4): ");
-                bool valid = int.TryParse(Console.ReadLine(), out int answerIndex);
-                answerIndex--;
-
-                if (!valid || answerIndex < 0 || answerIndex >= question.listAnswers.Count)
-                {
-                    Console.WriteLine($"Érvénytelen válasz! A helyes válasz: {question.listAnswers[question.correctIndex]}");
-                }
-                else if (answerIndex == question.correctIndex)
+                if (selectedAnswer == question.correctIndex)
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("\nHelyes válasz!");
                     score++;
-                    Console.WriteLine("Helyes válasz!");
-                    Thread.Sleep(2000);
-                    Console.Clear();
-                    Console.ResetColor();
                 }
                 else
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine($"Hibás válasz! A helyes válasz: {question.listAnswers[question.correctIndex]}");
-                    Thread.Sleep(2000);
-                    Console.Clear();
-                    Console.ResetColor();
+                    Console.WriteLine($"\nHibás válasz! A helyes válasz: {question.listAnswers[question.correctIndex]}");
                 }
+
+                Console.ResetColor();
+                Thread.Sleep(2000);
             }
-            Console.WriteLine($"\nJáték vége! Elért pontszám: {score} / {randomQuestions.Count}");
+
+            Console.Clear();
+            Console.WriteLine($"\nJáték vége! {playerName}, az elért pontszámod: {score} / {randomQuestions.Count}");
+        }
+
+
+        public static void ShowLeaderboard()
+        {
         }
     }
 }
