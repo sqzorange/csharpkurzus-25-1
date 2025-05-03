@@ -1,6 +1,5 @@
-
-
 namespace QO1APY.Services
+
 {
     public static class GameService
     {
@@ -78,11 +77,33 @@ namespace QO1APY.Services
 
             Console.Clear();
             Console.WriteLine($"\nJáték vége! {playerName}, az elért pontszámod: {score} / {randomQuestions.Count}");
+            FileService service = new();
+            service.SaveLeaderboard(new PlayerResult(playerName, score, DateTime.Now));
         }
 
 
         public static void ShowLeaderboard()
         {
+            Console.Clear();
+            Console.WriteLine("=== Leaderboard ===");
+
+            FileService leaderBoard = new FileService();
+            List<PlayerResult> leaderboard = leaderBoard.LoadLeaderboard();
+
+            if (leaderboard.Count == 0)
+            {
+                Console.WriteLine("A leaderboard üres.");
+            }
+            else
+            {
+                foreach (var player in leaderboard.OrderByDescending(x => x.Score))
+                {
+                    Console.WriteLine($"{player.Name}: {player.Score} pont , {player.Date.ToString("yyyy-MM-dd HH:mm:ss")}");
+                }
+            }
+
+            Console.WriteLine("\nNyomjon Entert a visszatéréshez a menübe...");
+            Console.ReadLine();
         }
     }
 }
