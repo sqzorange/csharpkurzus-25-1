@@ -1,39 +1,37 @@
 using System.Text.Json;
-namespace QO1APY.Services
+namespace QO1APY.Services;
+
+public class FileService
 {
-    public class FileService
+    public static List<Question> LoadQuestions()
     {
-        public int Count { get; internal set; }
-
-        public static List<Question> LoadQuestions()
+        try
         {
-            try
+            string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "json", "question.json");
+            using (FileStream fs = new(path, FileMode.Open, FileAccess.Read))
+            using (StreamReader sr = new(fs))
             {
-                string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "json", "question.json");
-                using (FileStream fs = new(path, FileMode.Open, FileAccess.Read))
-                using (StreamReader sr = new(fs))
-                {
-                    string json = sr.ReadToEnd();
-                    return JsonSerializer.Deserialize<List<Question>>(json) ?? new();
-                }
+                string json = sr.ReadToEnd();
+                return JsonSerializer.Deserialize<List<Question>>(json) ?? new();
             }
-            catch (IOException)
-            {
-                throw new IOException("Nem található a kérdések fájlja!");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Hiba történt a fájl beolvasásakor: {ex.Message}");
-            }
-
+        }
+        catch (IOException)
+        {
+            throw new IOException("Nem található a kérdések fájlja!");
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Hiba történt a fájl beolvasásakor: {ex.Message}");
         }
 
-        public void SaveLeaderboard(PlayerResult playerResult)
+    }
+
+    public void SaveLeaderboard(PlayerResult playerResult)
+    {
+        try
         {
             string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "json", "leaderboard.json");
             List<PlayerResult> leaderboard = new();
-
-            // Ha létezik már leaderboard, töltsük be
             if (File.Exists(path))
             {
                 string jsonRead = File.ReadAllText(path);
@@ -45,29 +43,36 @@ namespace QO1APY.Services
             string jsonWrite = JsonSerializer.Serialize(leaderboard, new JsonSerializerOptions { WriteIndented = true });
             File.WriteAllText(path, jsonWrite);
         }
-
-
-        public List<PlayerResult> LoadLeaderboard()
+        catch (IOException)
         {
-            try
-            {
-                string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "json", "leaderboard.json");
-                using (FileStream fs = new(path, FileMode.Open, FileAccess.Read))
-                using (StreamReader sr = new(fs))
-                {
-                    string json = sr.ReadToEnd();
-                    return JsonSerializer.Deserialize<List<PlayerResult>>(json) ?? new();
-                }
+            throw new IOException("Nem található a leaderboard fájlja!");
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Hiba történt a fájl írásakor: {ex.Message}");
+        }
+    }
 
-            }
-            catch (IOException)
+    public List<PlayerResult> LoadLeaderboard()
+    {
+        try
+        {
+            string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "json", "leaderboard.json");
+            using (FileStream fs = new(path, FileMode.Open, FileAccess.Read))
+            using (StreamReader sr = new(fs))
             {
-                throw new IOException("Nem található a leaderboard fájlja!");
+                string json = sr.ReadToEnd();
+                return JsonSerializer.Deserialize<List<PlayerResult>>(json) ?? new();
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"Hiba történt a fájl beolvasásakor: {ex.Message}");
-            }
+
+        }
+        catch (IOException)
+        {
+            throw new IOException("Nem található a leaderboard fájlja!");
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Hiba történt a fájl beolvasásakor: {ex.Message}");
         }
     }
 }
