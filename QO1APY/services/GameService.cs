@@ -12,8 +12,7 @@ namespace QO1APY.Services
             string playerName = Console.ReadLine() ?? "Névtelen";
             Console.Clear();
 
-            Console.WriteLine($"Üdvözöljük, {playerName}! Készen áll a játékra? (I/N)");
-            string startGame = Console.ReadLine() ?? "N";
+            string startGame = "I";
             Console.Clear();
 
             if (startGame.ToUpper() != "I")
