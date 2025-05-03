@@ -10,12 +10,12 @@ namespace QO1APY.Services
             try
             {
                 string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "json", "question.json");
-                FileStream fs = new(path, FileMode.Open, FileAccess.Read);
-                StreamReader sr = new(fs);
-                string json = sr.ReadToEnd();
-                fs.Close();
-                sr.Close();
-                return JsonSerializer.Deserialize<List<Question>>(json) ?? new();
+                using (FileStream fs = new(path, FileMode.Open, FileAccess.Read))
+                using (StreamReader sr = new(fs))
+                {
+                    string json = sr.ReadToEnd();
+                    return JsonSerializer.Deserialize<List<Question>>(json) ?? new();
+                }
             }
             catch (IOException)
             {
@@ -49,7 +49,25 @@ namespace QO1APY.Services
 
         public List<PlayerResult> LoadLeaderboard()
         {
-            return new List<PlayerResult>();
+            try
+            {
+                string path = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "json", "leaderboard.json");
+                using (FileStream fs = new(path, FileMode.Open, FileAccess.Read))
+                using (StreamReader sr = new(fs))
+                {
+                    string json = sr.ReadToEnd();
+                    return JsonSerializer.Deserialize<List<PlayerResult>>(json) ?? new();
+                }
+
+            }
+            catch (IOException)
+            {
+                throw new IOException("Nem található a leaderboard fájlja!");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Hiba történt a fájl beolvasásakor: {ex.Message}");
+            }
         }
     }
 }

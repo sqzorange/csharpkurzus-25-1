@@ -101,9 +101,6 @@ namespace QO1APY.Services
                     Console.WriteLine($"{player.Name}: {player.Score} pont , {player.Date.ToString("yyyy-MM-dd HH:mm:ss")}");
                 }
             }
-
-            Console.WriteLine("\nNyomjon Entert a visszatéréshez a menübe...");
-            Console.ReadLine();
         }
     }
 }
