@@ -6,18 +6,8 @@ public static class GameService
     {
         Console.Clear();
         Console.WriteLine("=== Kvízjáték ===");
-        Console.Write("Kérjük, adja meg a nevét: ");
-        string playerName = Console.ReadLine() ?? "Névtelen";
+        var playerName = GetPlayerName();
         Console.Clear();
-
-        string startGame = "I";
-        Console.Clear();
-
-        if (startGame.ToUpper() != "I")
-        {
-            Console.WriteLine("A játék leállt.");
-            return;
-        }
 
         List<Question> questions = FileService.LoadQuestions();
         Random random = new();
@@ -26,38 +16,7 @@ public static class GameService
 
         foreach (var question in randomQuestions)
         {
-            int selectedAnswer = 0;
-
-            while (true)
-            {
-                Console.Clear();
-                Console.WriteLine(question.text);
-                Console.WriteLine("\nVálaszok:");
-
-                for (int i = 0; i < question.listAnswers.Count; i++)
-                {
-                    if (i == selectedAnswer)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"> {question.listAnswers[i]}");
-                        Console.ResetColor();
-                    }
-                    else
-                    {
-                        Console.WriteLine($"  {question.listAnswers[i]}");
-                    }
-                }
-
-                ConsoleKey key = Console.ReadKey(true).Key;
-
-                if (key == ConsoleKey.UpArrow)
-                    selectedAnswer = (selectedAnswer - 1 + question.listAnswers.Count) % question.listAnswers.Count;
-                else if (key == ConsoleKey.DownArrow)
-                    selectedAnswer = (selectedAnswer + 1) % question.listAnswers.Count;
-                else if (key == ConsoleKey.Enter)
-                    break;
-            }
-
+            int selectedAnswer = SelectAnswer(question);
             if (selectedAnswer == question.correctIndex)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -100,5 +59,46 @@ public static class GameService
                 Console.WriteLine($"{player.Name}: {player.Score} pont , {player.Date.ToString("yyyy-MM-dd HH:mm:ss")}");
             }
         }
+    }
+    private static string GetPlayerName()
+    {
+        Console.Write("Kérjük, adja meg a nevét: ");
+        return Console.ReadLine() ?? "Névtelen";
+    }
+    private static int SelectAnswer(Question question)
+    {
+        int selectedAnswer = 0;
+
+        while (true)
+        {
+            Console.Clear();
+            Console.WriteLine(question.text);
+            Console.WriteLine("\nVálaszok:");
+
+            for (int i = 0; i < question.listAnswers.Count; i++)
+            {
+                if (i == selectedAnswer)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine($"> {question.listAnswers[i]}");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.WriteLine($"  {question.listAnswers[i]}");
+                }
+            }
+
+            ConsoleKey key = Console.ReadKey(true).Key;
+
+            if (key == ConsoleKey.UpArrow)
+                selectedAnswer = (selectedAnswer - 1 + question.listAnswers.Count) % question.listAnswers.Count;
+            else if (key == ConsoleKey.DownArrow)
+                selectedAnswer = (selectedAnswer + 1) % question.listAnswers.Count;
+            else if (key == ConsoleKey.Enter)
+                break;
+        }
+
+        return selectedAnswer;
     }
 }

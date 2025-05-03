@@ -1,4 +1,5 @@
-﻿using QO1APY.Services;
+﻿using QO1APY.Helpers;
+using QO1APY.Services;
 
 string[] menuOptions = { "Játék indítása", "Leaderboard megtekintése", "Kilépés" };
 int selectedIndex = 0;
@@ -6,22 +7,7 @@ bool running = true;
 
 while (running)
 {
-    Console.Clear();
-    Console.WriteLine("=== Kvízjáték ===\n");
-
-    for (int i = 0; i < menuOptions.Length; i++)
-    {
-        if (i == selectedIndex)
-        {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"> {menuOptions[i]}");
-            Console.ResetColor();
-        }
-        else
-        {
-            Console.WriteLine($"  {menuOptions[i]}");
-        }
-    }
+    MenuHelper.ShowMenu(menuOptions, selectedIndex);
 
     ConsoleKey key = Console.ReadKey(true).Key;
 
