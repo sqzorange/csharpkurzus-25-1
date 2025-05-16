@@ -69,6 +69,161 @@
       ],
       "correctIndex": 1,
       "difficulty": "hard"
-    }
+    },
+    {
+      "text": "A kurzus során melyik volt jobb tanár?",
+      "listAnswers": [
+        "Árpi",
+        "Gábor",
+        "Nem tudom, nem jártam be",
+        "Volt bent tanár?"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy"
+    },
+    {
+      "text": "Melyik számít szoftvernek?",
+      "listAnswers": [
+        "Monitor",
+        "Egér",
+        "Hangszóró",
+        "Windows"
+      ],
+      "correctIndex": 3,
+      "difficulty": "easy"
+    },
+    {
+      "text": "Milyen színnel rendelkezik a CooSpace?",
+      "listAnswers": [
+        "Narancs",
+        "Fekete",
+        "Kék",
+        "Zöld"
+      ],
+      "correctIndex": 0,
+      "difficulty": "medium"
+    },
+    {
+  "text": "Ki alkotta meg a relativitáselméletet?",
+  "listAnswers": ["Isaac Newton", "Thomas Edison", "Albert Einstein", "Nikola Tesla"],
+  "correctIndex": 2,
+  "difficulty": "easy"
+    }, 
+    {
+  "text": "Ki írta a Harry Potter könyvsorozatot?",
+  "listAnswers": [
+    "J.R.R. Tolkien",
+    "Stephen King",
+    "J.K. Rowling",
+    "George R.R. Martin"
+  ],
+  "correctIndex": 2,
+  "difficulty": "easy"
+  },
+  {
+  "text": "Mi az a tartomány, amelyet az emberi szem képes látni az elektromágneses spektrumon belül?",
+  "listAnswers": [
+    "Infravörös sugárzás",
+    "Ultraviola sugárzás",
+    "Látható fény",
+    "Röntgensugárzás"
+  ],
+  "correctIndex": 2,
+  "difficulty": "medium"
+  },
+  {
+  "text": "Melyik bolygón található a legnagyobb vulkán, az Olympus Mons?",
+  "listAnswers": ["Föld", "Mars", "Jupiter", "Vénusz"],
+  "correctIndex": 1,
+  "difficulty": "medium"
+  },
+  {
+  "text": "Ki festette a 'Csillagos éj' című festményt?",
+  "listAnswers": [
+    "Pablo Picasso",
+    "Vincent van Gogh",
+    "Claude Monet",
+    "Salvador Dalí"
+  ],
+  "correctIndex": 1,
+  "difficulty": "medium"
+  },
+  {
+  "text": "Melyik kontinens a legnagyobb területű a Földön?",
+  "listAnswers": [
+    "Afrika",
+    "Európa",
+    "Ázsia",
+    "Dél-Amerika"
+  ],
+  "correctIndex": 2,
+  "difficulty": "easy"
+  },
+  {
+  "text": "Mit jelent a REST a webfejlesztésben?",
+  "listAnswers": [
+    "Remote Execution of Server Tasks",
+    "Representational State Transfer",
+    "Recursive Elemental Search Technology",
+    "Real-time Event Signal Transmission"
+  ],
+  "correctIndex": 1,
+  "difficulty": "easy"
+  },
+  {
+  "text": "Mit jelent a CI/CD rövidítés az informatikában?",
+  "listAnswers": [
+    "Continuous Integration / Continuous Delivery",
+    "Code Injection / Code Deployment",
+    "Central Interface / Core Database",
+    "Cache Invalidation / Cluster Distribution"
+  ],
+  "correctIndex": 0,
+  "difficulty": "medium"
+  },
+  {
+  "text": "Mi a különbség a 'ref' és az 'out' kulcsszavak használata között C#-ban?",
+  "listAnswers": [
+    "A 'ref'-ként átadott paramétert előzetesen inicializálni kell, míg az 'out'-ot nem",
+    "Az 'out'-ot előzetesen inicializálni kell, míg a 'ref'-et nem",
+    "Mindkettőnél előzetes inicializálás kötelező",
+    "Mindkettőnél előzetes inicializálás nem szükséges"
+  ],
+  "correctIndex": 0,
+  "difficulty": "medium"
+  },
+  {
+  "text": "Mit jelent az 'extends' és az 'implements' kulcsszavak használata Java-ban?",
+  "listAnswers": [
+    "Az 'extends' egy osztály öröklődését, az 'implements' pedig egy interfész megvalósítását jelenti.",
+    "Az 'extends' egy interfész megvalósítását, az 'implements' pedig egy osztály öröklődését jelenti.",
+    "Mindkettő ugyanazt jelenti, egymás helyettesítésére használhatók.",
+    "Az 'extends' kizárólag interfészekhez, az 'implements' kizárólag osztályokhoz használható."
+  ],
+  "correctIndex": 0,
+  "difficulty": "hard"
+  },
+  {
+  "text": "Melyik közlekedési mód számít a legkörnyezetbarátabbnak a városi ingázás során?",
+  "listAnswers": [
+    "Autó",
+    "Motorkerékpár",
+    "Kerékpár",
+    "Taxi"
+  ],
+  "correctIndex": 2,
+  "difficulty": "easy"
+  }, 
+  {
+  "text": "Melyik hétköznapi tevékenység bizonyult tudományosan hatékonynak a stressz csökkentésében?",
+  "listAnswers": [
+    "Rendszeres testmozgás",
+    "Túlzott képernyőidő",
+    "Folyamatos multitasking",
+    "Hosszú órákon át tartó ülőmunka"
+  ],
+  "correctIndex": 0,
+  "difficulty": "easy"
+  }
   ]
   
